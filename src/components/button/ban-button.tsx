@@ -1,41 +1,27 @@
 'use client';
 
+import {toast} from 'react-toastify';
 import {deleteUser} from '@/utils/service';
 import {useRouter} from 'next/navigation';
-import React, {useState} from 'react';
-import {FaSpinner, FaTrash} from 'react-icons/fa';
-import {toast} from 'react-toastify';
 
-const BanButton = ({id}: {id: string}) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export default function BanButton({id}: {id: string}) {
   const router = useRouter();
 
-  // when delete button is clicked
-  const handleDelete = async () => {
-    if (!confirm('Are you sure you want to delete this user?')) return;
-
-    setIsLoading(true);
-    deleteUser(id)
-      .then(() => {
-        toast.success('User deleted');
-        router.refresh();
-      })
-      .catch(() => {
-        toast.error('User not deleted');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+  const handleBan = async () => {
+    try {
+      await deleteUser(id);
+      toast.success('User banned successfully');
+      router.refresh();
+    } catch (error) {
+      toast.error('Failed to ban user');
+    }
   };
 
   return (
     <button
-      disabled={isLoading}
-      className="button hover:bg-red-200 text-red-500 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
-      onClick={handleDelete}>
-      {isLoading ? <FaSpinner className="animate-spin" /> : <FaTrash />}
+      onClick={handleBan}
+      className="px-3 py-1 text-sm text-red-600 hover:text-red-800 transition-colors">
+      Ban
     </button>
   );
-};
-
-export default BanButton;
+}

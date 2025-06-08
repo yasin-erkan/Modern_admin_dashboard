@@ -10,8 +10,8 @@ import React from 'react';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Modern Admin Dashboard',
-  description: 'A modern admin dashboard built with Next.js and Material UI',
+  title: 'Admin Dashboard',
+  description: 'Modern Admin Dashboard',
 }
 
 export default function RootLayout({
@@ -22,14 +22,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex min-h-screen">
+        <div className="flex h-screen bg-gray-100">
           <Navbar />
-          <div className="flex flex-col w-full">
+          <div className="flex-1 flex flex-col overflow-hidden">
             <Header />
-            <main className="flex-1 bg-[#edeff5] text-black">{children}</main>
-            <ToastContainer />
+            <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+              {children}
+            </main>
           </div>
         </div>
+        <ToastContainer />
       </body>
     </html>
   )
