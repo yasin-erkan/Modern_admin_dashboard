@@ -1,31 +1,43 @@
 import {Order, Product, User} from '@/types';
 
-const BaseUrl = 'http://localhost:9090';
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // Fetch all orders
-const getOrders = async (): Promise<Order[]> => {
-  const res = await fetch(`${BaseUrl}/orders`);
-  return res.json();
+export const getOrders = async (): Promise<Order[]> => {
+  try {
+    const response = await fetch(`${API_URL}/orders`);
+    if (!response.ok) throw new Error('Failed to fetch orders');
+    return response.json();
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    return [];
+  }
 };
 
 // Fetch all products
-const getProducts = async (): Promise<Product[]> => {
-  const res = await fetch(`${BaseUrl}/products`);
-  return res.json();
+export const getProducts = async (): Promise<Product[]> => {
+  try {
+    const response = await fetch(`${API_URL}/products`);
+    if (!response.ok) throw new Error('Failed to fetch products');
+    return response.json();
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
 };
 
 // Fetch a single product by ID
-const getProduct = async (id: string): Promise<Product> => {
-  const res = await fetch(`${BaseUrl}/products/${id}`);
+export const getProduct = async (id: string): Promise<Product> => {
+  const res = await fetch(`${API_URL}/products/${id}`);
   return res.json();
 };
 
 // Update a product
-const updateProduct = async (
+export const updateProduct = async (
   id: string,
   product: Partial<Product>,
 ): Promise<Product> => {
-  const res = await fetch(`${BaseUrl}/products/${id}`, {
+  const res = await fetch(`${API_URL}/products/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -37,8 +49,8 @@ const updateProduct = async (
 };
 
 // Delete a product
-const deleteProduct = async (id: string): Promise<void> => {
-  const res = await fetch(`${BaseUrl}/products/${id}`, {
+export const deleteProduct = async (id: string): Promise<void> => {
+  const res = await fetch(`${API_URL}/products/${id}`, {
     method: 'DELETE',
   });
 
@@ -46,10 +58,10 @@ const deleteProduct = async (id: string): Promise<void> => {
 };
 
 // Create a new product
-const createProduct = async (
+export const createProduct = async (
   product: Omit<Product, 'id'>,
 ): Promise<Product> => {
-  const res = await fetch(`${BaseUrl}/products`, {
+  const res = await fetch(`${API_URL}/products`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -61,14 +73,20 @@ const createProduct = async (
 };
 
 // Fetch all users
-const getUsers = async (): Promise<User[]> => {
-  const res = await fetch(`${BaseUrl}/users`);
-  return res.json();
+export const getUsers = async (): Promise<User[]> => {
+  try {
+    const response = await fetch(`${API_URL}/users`);
+    if (!response.ok) throw new Error('Failed to fetch users');
+    return response.json();
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    return [];
+  }
 };
 
 // Delete a user
-const deleteUser = async (id: string): Promise<void> => {
-  const res = await fetch(`${BaseUrl}/users/${id}`, {
+export const deleteUser = async (id: string): Promise<void> => {
+  const res = await fetch(`${API_URL}/users/${id}`, {
     method: 'DELETE',
   });
 
@@ -76,8 +94,8 @@ const deleteUser = async (id: string): Promise<void> => {
 };
 
 // Fetch a single user by ID
-const getUser = async (id: string): Promise<User> => {
-  const res = await fetch(`${BaseUrl}/users/${id}`);
+export const getUser = async (id: string): Promise<User> => {
+  const res = await fetch(`${API_URL}/users/${id}`);
   if (!res.ok) {
     throw new Error('User not found');
   }
@@ -85,23 +103,27 @@ const getUser = async (id: string): Promise<User> => {
 };
 
 // Return dashboard summary values
-const getValues = async () => {
-  const res = await fetch('http://localhost:3001/values', { cache: 'no-store' })
-  if (!res.ok) {
-    throw new Error('Failed to fetch values')
-  }
-  return res.json()
-}
+export const getValues = async () => {
+  try {
+    const [orders, products, users] = await Promise.all([
+      getOrders(),
+      getProducts(),
+      getUsers()
+    ]);
 
-export {
-  getOrders,
-  getProducts,
-  deleteProduct,
-  createProduct,
-  getProduct,
-  updateProduct,
-  getUsers,
-  deleteUser,
-  getUser,
-  getValues,
+    return {
+      totalOrders: orders.length,
+      totalProducts: products.length,
+      totalUsers: users.length,
+      totalRevenue: orders.reduce((sum, order) => sum + order.total, 0)
+    };
+  } catch (error) {
+    console.error('Error fetching values:', error);
+    return {
+      totalOrders: 0,
+      totalProducts: 0,
+      totalUsers: 0,
+      totalRevenue: 0
+    };
+  }
 };
