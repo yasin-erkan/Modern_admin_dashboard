@@ -1,110 +1,95 @@
 # Modern Admin Dashboard
 
-A sleek and responsive admin dashboard built with Next.js 14, TypeScript, and Tailwind CSS. This dashboard provides a comprehensive interface for managing products, orders, and users.
+A modern, responsive admin dashboard built with Next.js, Material-UI, and Chart.js.
 
-## 🚀 Features
+![Modern Admin Dashboard](Modern-admin-dashboard.gif)
 
-![Modern Admin Dashboard](https://github.com/yasin-erkan/Modern_admin_dashboard/blob/main/Modern-admin-dashboard.gif)
+## Features
 
-### Modern Tech Stack
-- Next.js 14 with App Router
-- TypeScript for type safety
-- Tailwind CSS for styling
-- React Icons for beautiful icons
-- JSON Server for mock API
+- 📊 Interactive Charts (Sales & Category Distribution)
+- 👥 User Management
+- 📦 Product Management
+- 🛒 Order Management
+- 🎨 Modern UI with Material-UI
+- 📱 Fully Responsive Design
+- 🌙 Dark/Light Mode Support
 
-### Dashboard Overview
-- Real-time statistics
-- Interactive charts and graphs
-- Quick access to key metrics
+## Tech Stack
 
-### Product Management
-- Product listing with search and filter
-- Add/Edit/Delete products
-- Image preview functionality
-- Stock management
-- Category organization
+- **Framework:** Next.js 14
+- **UI Library:** Material-UI (MUI)
+- **Charts:** Chart.js
+- **Styling:** Tailwind CSS
+- **Language:** TypeScript
+- **API:** Mock API with JSON Server
 
-### Order Management
-- Order tracking and history
-- Detailed order information
-- Status updates
-- Customer order details
+## Getting Started
 
-### User Management
-- User profiles and information
-- Order history per user
-- User activity tracking
-- Address management
-
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/Modern_admin_dashboard.git
+```
 
 2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+3. Start the mock API server:
+```bash
+npm run server
+```
 
-4. In a separate terminal, start the JSON server:
-   ```bash
-   npm run server
-   ```
+4. Start the development server:
+```bash
+npm run dev
+```
 
-## 🔧 Configuration
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The project uses several configuration files:
+## Project Structure
 
-| File | Purpose |
-|------|---------|
-| `tailwind.config.js` | Tailwind CSS configuration |
-| `tsconfig.json` | TypeScript configuration |
-| `next.config.js` | Next.js configuration |
+```
+src/
+├── app/              # Next.js app directory
+├── components/       # React components
+│   ├── button/      # Button components
+│   ├── card/        # Card components
+│   ├── form/        # Form components
+│   ├── graphic/     # Chart components
+│   ├── header/      # Header components
+│   ├── home/        # Dashboard components
+│   ├── modal/       # Modal components
+│   ├── navbar/      # Navigation components
+│   └── table/       # Table components
+├── assets/          # Static assets
+│   └── images/      # Image files
+├── types/           # TypeScript types
+└── utils/           # Utility functions
+```
 
-## 🎨 Customization
+## API Endpoints
 
-### Theming
-Customize colors and styles in `tailwind.config.js`
+The mock API server runs on port 9090 and provides the following endpoints:
 
-### Components
-Modify components in the `components` directory
+- `/users` - User management
+- `/products` - Product management
+- `/orders` - Order management
 
-### API
-Update API endpoints in `utils/service.ts`
-
-## 📱 Responsive Design
-
-The dashboard is fully responsive and works on:
-- Desktop
-- Tablet
-- Mobile devices
-
-## 🔒 Security Features
-
-- Type-safe API calls
-- Input validation
-- Secure data handling
-
-## 🚀 Performance
-
-- Server-side rendering
-- Image optimization
-- Code splitting
-- Lazy loading
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## License
 
-## 🙏 Acknowledgments
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- Next.js team for the amazing framework
-- Tailwind CSS for the utility-first CSS framework
-- React Icons for the beautiful icon set
+## Contact
+
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+
+Project Link: [https://github.com/yourusername/Modern_admin_dashboard](https://github.com/yourusername/Modern_admin_dashboard)
