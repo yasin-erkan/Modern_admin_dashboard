@@ -44,11 +44,10 @@ const handleSubmit = async (formData: FormData) => {
     } else {
       await createProduct(productData);
     }
-
-    redirect(`/products`);
+    redirect('/products');
   } catch (error) {
-    console.log(error);
-    throw new Error('Product creation error');
+    console.error(error);
+    throw new Error('Product operation failed');
   }
 };
 
