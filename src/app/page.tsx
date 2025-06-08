@@ -13,10 +13,10 @@ import {getValues} from '@/utils/service';
 
 export default function Home() {
   const [values, setValues] = React.useState({
-    total_users: 0,
-    total_orders: 0,
-    total_price: 0,
-    total_products: 0
+    totalOrders: 0,
+    totalProducts: 0,
+    totalUsers: 0,
+    totalRevenue: 0
   });
 
   React.useEffect(() => {
@@ -31,22 +31,22 @@ export default function Home() {
     {
       icon: icon1,
       label: 'Total Users',
-      value: values.total_users * 197,
+      value: values.totalUsers * 197,
     },
     {
       icon: icon2,
       label: 'Total Orders',
-      value: values.total_orders * 78,
+      value: values.totalOrders * 78,
     },
     {
       icon: icon3,
       label: 'Total Sales',
-      value: (values.total_price * 254).toLocaleString() + '$',
+      value: (values.totalRevenue * 254).toLocaleString() + '$',
     },
     {
       icon: icon4,
       label: 'Total Products',
-      value: values.total_products * 156,
+      value: values.totalProducts * 156,
     },
   ];
 

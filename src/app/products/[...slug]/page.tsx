@@ -11,36 +11,34 @@ import React from 'react';
 // ! Form Component
 function ProductForm({product}: {product: Product | null}) {
   async function handleSubmit(formData: FormData) {
-    'use server';
+    const id = formData.get('id') as string;
+    const name = formData.get('name') as string;
+    const brand = formData.get('brand') as string;
+    const price = formData.get('price') as string;
+    const stock = formData.get('stock') as string;
+    const rating = formData.get('rating') as string;
+    const reviews_count = formData.get('reviews_count') as string;
+    const category = formData.get('category') as string;
+    const image_url = formData.get('image_url') as string;
+    const description = formData.get('description') as string;
+
+    if (!name || !brand || !price || !stock || !category || !image_url || !description) {
+      throw new Error('All fields are required');
+    }
+
+    const productData: Omit<Product, 'id'> = {
+      name,
+      brand,
+      category,
+      description,
+      image_url,
+      price: parseFloat(price),
+      stock: parseInt(stock),
+      rating: parseFloat(rating),
+      reviews_count: parseInt(reviews_count),
+    };
 
     try {
-      const id = formData.get('id') as string;
-      const name = formData.get('name') as string;
-      const brand = formData.get('brand') as string;
-      const price = formData.get('price') as string;
-      const stock = formData.get('stock') as string;
-      const rating = formData.get('rating') as string;
-      const reviews_count = formData.get('reviews_count') as string;
-      const category = formData.get('category') as string;
-      const image_url = formData.get('image_url') as string;
-      const description = formData.get('description') as string;
-
-      if (!name || !brand || !price || !stock || !category || !image_url || !description) {
-        throw new Error('All fields are required');
-      }
-
-      const productData: Omit<Product, 'id'> = {
-        name,
-        brand,
-        category,
-        description,
-        image_url,
-        price: parseFloat(price),
-        stock: parseInt(stock),
-        rating: parseFloat(rating),
-        reviews_count: parseInt(reviews_count),
-      };
-
       if (id) {
         await updateProduct(id, productData);
       } else {
