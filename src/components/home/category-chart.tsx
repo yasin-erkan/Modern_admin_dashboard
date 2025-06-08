@@ -1,4 +1,6 @@
-import React from 'react'
+'use client';
+
+import React, {useEffect} from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
@@ -6,8 +8,6 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
-
-ChartJS.register(ArcElement, Tooltip, Legend)
 
 const options = {
   responsive: true,
@@ -48,6 +48,10 @@ const data = {
 }
 
 export default function CategoryChart() {
+  useEffect(() => {
+    ChartJS.register(ArcElement, Tooltip, Legend);
+  }, []);
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-sm">
       <Doughnut options={options} data={data} />

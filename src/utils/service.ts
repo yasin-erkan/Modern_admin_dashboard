@@ -19,6 +19,7 @@ const getProduct = async (id: string): Promise<Product> => {
   const res = await fetch(`${BaseUrl}/products/${id}`);
   return res.json();
 };
+
 // Update a product
 const updateProduct = async (
   id: string,
@@ -38,7 +39,7 @@ const updateProduct = async (
 // Delete a product
 const deleteProduct = async (id: string): Promise<void> => {
   const res = await fetch(`${BaseUrl}/products/${id}`, {
-    method: 'DELETE', // You must specify the method for non-GET requests
+    method: 'DELETE',
   });
 
   return res.json();
@@ -84,7 +85,7 @@ const getUser = async (id: string): Promise<User> => {
 };
 
 // Return dashboard summary values
-export async function getValues() {
+const getValues = async () => {
   const res = await fetch('http://localhost:3001/values', { cache: 'no-store' })
   if (!res.ok) {
     throw new Error('Failed to fetch values')

@@ -1,3 +1,5 @@
+'use client';
+
 import icon1 from '@/assets/images/icon-1.webp';
 import icon2 from '@/assets/images/icon-2.webp';
 import icon3 from '@/assets/images/icon-3.webp';
@@ -9,8 +11,22 @@ import CategoryChart from '@/components/home/category-chart';
 import React from 'react';
 import {getValues} from '@/utils/service';
 
-export default async function Home() {
-  const values = await getValues();
+export default function Home() {
+  const [values, setValues] = React.useState({
+    total_users: 0,
+    total_orders: 0,
+    total_price: 0,
+    total_products: 0
+  });
+
+  React.useEffect(() => {
+    const fetchValues = async () => {
+      const data = await getValues();
+      setValues(data);
+    };
+    fetchValues();
+  }, []);
+
   const cards: InfoCardItem[] = [
     {
       icon: icon1,
