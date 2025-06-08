@@ -8,51 +8,47 @@ import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import React from 'react';
 
-// Function to be used during the action
-// With this method, we can manage the form without making it a client component
-const handleSubmit = async (formData: FormData) => {
-  'use server'; // server action
-
-  // Get the form data
-  const id = formData.get('id') as string;
-  const name = formData.get('name') as string;
-  const brand = formData.get('brand') as string;
-  const price = formData.get('price') as string;
-  const stock = formData.get('stock') as string;
-  const rating = formData.get('rating') as string;
-  const reviews_count = formData.get('reviews_count') as string;
-  const category = formData.get('category') as string;
-  const image_url = formData.get('image_url') as string;
-  const description = formData.get('description') as string;
-
-  // Create product data object
-  const productData: Omit<Product, 'id'> = {
-    name,
-    brand,
-    category,
-    description,
-    image_url,
-    price: parseFloat(price),
-    stock: parseInt(stock),
-    rating: parseFloat(rating),
-    reviews_count: parseInt(reviews_count),
-  };
-
-  try {
-    if (id) {
-      await updateProduct(id, productData);
-    } else {
-      await createProduct(productData);
-    }
-    redirect('/products');
-  } catch (error) {
-    console.error(error);
-    throw new Error('Product operation failed');
-  }
-};
-
 // ! Form Component
 function ProductForm({product}: {product: Product | null}) {
+  async function handleSubmit(formData: FormData) {
+    'use server';
+
+    const id = formData.get('id') as string;
+    const name = formData.get('name') as string;
+    const brand = formData.get('brand') as string;
+    const price = formData.get('price') as string;
+    const stock = formData.get('stock') as string;
+    const rating = formData.get('rating') as string;
+    const reviews_count = formData.get('reviews_count') as string;
+    const category = formData.get('category') as string;
+    const image_url = formData.get('image_url') as string;
+    const description = formData.get('description') as string;
+
+    const productData: Omit<Product, 'id'> = {
+      name,
+      brand,
+      category,
+      description,
+      image_url,
+      price: parseFloat(price),
+      stock: parseInt(stock),
+      rating: parseFloat(rating),
+      reviews_count: parseInt(reviews_count),
+    };
+
+    try {
+      if (id) {
+        await updateProduct(id, productData);
+      } else {
+        await createProduct(productData);
+      }
+      redirect('/products');
+    } catch (error) {
+      console.error(error);
+      throw new Error('Product operation failed');
+    }
+  }
+
   return (
     <form action={handleSubmit} className="space-y-6">
       {/* We hide the input to pass the id within the handle submit when in edit mode */}
