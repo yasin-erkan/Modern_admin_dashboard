@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'modern-admin-dashboard-api.vercel.app'],
     remotePatterns: [
       {
         protocol: 'http',
@@ -9,9 +9,17 @@ const nextConfig = {
         port: '9090',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'modern-admin-dashboard-api.vercel.app',
+        pathname: '/**',
+      }
     ],
   },
-  reactStrictMode: true
+  reactStrictMode: true,
+  experimental: {
+    serverActions: true
+  }
 }
 
 module.exports = nextConfig 
