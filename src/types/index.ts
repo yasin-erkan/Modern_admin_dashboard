@@ -7,10 +7,10 @@ interface Option {
   url?: string;
 }
 
-interface InfoCardItem {
+export interface InfoCardItem {
   icon: StaticImageData;
   label: string;
-  value: string | number;
+  value: number | string;
 }
 
 interface Order {
@@ -34,16 +34,15 @@ interface Order {
   id: string;
 }
 
-interface ChartData {
+export interface ChartData {
   labels: string[];
-  datasets: [
-    {
-      label: string;
-      data: number[];
-      borderColor?: string | string[];
-      backgroundColor?: string | string[];
-    },
-  ];
+  datasets: {
+    label: string;
+    data: number[];
+    backgroundColor: string[];
+    borderColor?: string;
+    borderWidth?: number;
+  }[];
 }
 
 type Product = {

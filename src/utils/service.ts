@@ -84,18 +84,13 @@ const getUser = async (id: string): Promise<User> => {
 };
 
 // Return dashboard summary values
-const getValues = async () => {
-  const users = await getUsers();
-  const products = await getProducts();
-  const orders = await getOrders();
-
-  return {
-    total_users: users.length,
-    total_products: products.length,
-    total_orders: orders.length,
-    total_price: orders.reduce((acc, order) => acc + order.total_price, 0),
-  };
-};
+export async function getValues() {
+  const res = await fetch('http://localhost:3001/values', { cache: 'no-store' })
+  if (!res.ok) {
+    throw new Error('Failed to fetch values')
+  }
+  return res.json()
+}
 
 export {
   getOrders,

@@ -1,32 +1,57 @@
-import {getOrders} from '@/utils/service';
-import LineGraph from '../graphic/line-graph';
-import {ChartData} from '@/types';
-import React from 'react';
+import React from 'react'
+import { Line } from 'react-chartjs-2'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js'
 
-export default async function SalesChart() {
-  // Get order data from API
-  const orders = await getOrders();
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+)
 
-  // Format data for chart
-  const labels: string[] = orders.map(order => order.order_date);
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top' as const,
+    },
+    title: {
+      display: true,
+      text: 'Sales Overview',
+    },
+  },
+}
 
-  const data: ChartData = {
-    labels,
-    datasets: [
-      {
-        label: 'Sales Amount',
-        data: orders.map(order => order.total_price),
-        borderColor: 'rgb(0, 150, 255)',
-        backgroundColor: 'rgba(0, 150, 255, 0.5)',
-      },
-    ],
-  };
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
 
+const data = {
+  labels,
+  datasets: [
+    {
+      label: 'Sales',
+      data: [65, 59, 80, 81, 56, 55, 40],
+      borderColor: 'rgb(75, 192, 192)',
+      backgroundColor: 'rgba(75, 192, 192, 0.5)',
+    },
+  ],
+}
+
+export default function SalesChart() {
   return (
-    <div className="bg-white rounded-lg p-5">
-      <h2 className="subtitle">Sales Chart</h2>
-
-      <LineGraph data={data} />
+    <div className="bg-white p-6 rounded-lg shadow-sm">
+      <Line options={options} data={data} />
     </div>
-  );
+  )
 }

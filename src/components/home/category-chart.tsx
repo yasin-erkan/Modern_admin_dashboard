@@ -1,53 +1,56 @@
-import {ChartData} from '@/types';
-import DoughnutGraph from '../graphic/doughnut-graph';
-import {getProducts} from '@/utils/service';
-import React from 'react';
+import React from 'react'
+import { Doughnut } from 'react-chartjs-2'
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from 'chart.js'
 
-export default async function CategoryChart() {
-  // Get products from API
-  const products = await getProducts();
+ChartJS.register(ArcElement, Tooltip, Legend)
 
-  // Convert categories to unique array
-  const labels = [...new Set(products.map(product => product.category))];
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top' as const,
+    },
+    title: {
+      display: true,
+      text: 'Category Distribution',
+    },
+  },
+}
 
-  // Count products per category
-  const object: Record<string, number> = {};
+const data = {
+  labels: ['Electronics', 'Clothing', 'Books', 'Food', 'Other'],
+  datasets: [
+    {
+      label: 'Categories',
+      data: [12, 19, 3, 5, 2],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+      ],
+      borderWidth: 1,
+    },
+  ],
+}
 
-  products.forEach(product => {
-    object[product.category] = (object[product.category] || 0) + 1;
-  });
-
-  const data: ChartData = {
-    labels,
-    datasets: [
-      {
-        label: 'Products in Category',
-        data: Object.values(object),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-        ],
-        borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-        ],
-      },
-    ],
-  };
-
+export default function CategoryChart() {
   return (
-    <div className="bg-white rounded-lg p-5">
-      <h2 className="subtitle">Category Chart</h2>
-
-      <DoughnutGraph data={data} />
+    <div className="bg-white p-6 rounded-lg shadow-sm">
+      <Doughnut options={options} data={data} />
     </div>
-  );
+  )
 }

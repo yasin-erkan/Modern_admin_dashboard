@@ -1,22 +1,28 @@
-import {InfoCardItem} from '@/types';
-import Image from 'next/image';
-import React from 'react';
+import React from 'react'
+import Image from 'next/image'
+import { InfoCardItem } from '@/types'
 
-type Props = {
-  item: InfoCardItem;
-};
+interface Props {
+  item: InfoCardItem
+}
 
-export default function InfoCard({item}: Props) {
+export default function InfoCard({ item }: Props) {
   return (
-    <div className="bg-white rounded-lg p-3 flex justify-between items-center">
-      <div>
-        <h4 className="text-gray-700 whitespace-nowrap text-base sm:text-sm">
-          {item.label}
-        </h4>
-        <p className="font-bold text-xl md:text-2xl">{item.value}</p>
+    <div className="bg-white p-6 rounded-lg shadow-sm">
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 relative">
+          <Image
+            src={item.icon}
+            alt={item.label}
+            fill
+            className="object-contain"
+          />
+        </div>
+        <div>
+          <h3 className="text-gray-500 text-sm">{item.label}</h3>
+          <p className="text-2xl font-semibold">{item.value}</p>
+        </div>
       </div>
-
-      <Image src={item.icon} alt={item.label} width={56} height={56} />
     </div>
-  );
+  )
 }

@@ -1,26 +1,41 @@
-import {sections} from '@/utils/constants';
-import {RxHamburgerMenu} from 'react-icons/rx';
-import NavLink from './nav-link';
-import React from 'react';
+import React from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { FiHome, FiShoppingCart, FiUsers, FiSettings } from 'react-icons/fi'
+
+const menuItems = [
+  { icon: <FiHome size={20} />, name: 'Dashboard', url: '/' },
+  { icon: <FiShoppingCart size={20} />, name: 'Products', url: '/products' },
+  { icon: <FiUsers size={20} />, name: 'Users', url: '/users' },
+  { icon: <FiSettings size={20} />, name: 'Settings', url: '/settings' },
+]
 
 export default function Navbar() {
+  const pathname = usePathname()
+
   return (
-    <div className="min-h-screen min-w-[60px] shadow-lg text-black bg-white">
-      <div className="navbar flex flex-col gap-5 text-gray-500 fixed h-screen z-50 bg-white border-r border-zinc-300">
-        <button className="flex items-start justify-start pl-5 pt-5 text-2xl">
-          <input type="checkbox" id="menu-toggle" />
-
-          <label htmlFor="menu-toggle">
-            <RxHamburgerMenu />
-          </label>
-        </button>
-
-        <div>
-          {sections.map((i, key) => (
-            <NavLink {...i} key={key} />
-          ))}
-        </div>
+    <nav className="w-64 bg-white h-screen p-4 shadow-sm">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-gray-800">Admin Panel</h1>
       </div>
-    </div>
-  );
+
+      <ul className="space-y-2">
+        {menuItems.map((item, index) => (
+          <li key={index}>
+            <Link
+              href={item.url}
+              className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
+                pathname === item.url
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              {item.icon}
+              <span>{item.name}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
 }

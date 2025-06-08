@@ -1,441 +1,70 @@
 {
+  "values": {
+    "total_users": 100,
+    "total_orders": 250,
+    "total_price": 50000,
+    "total_products": 75
+  },
+  "orders": [
+    {
+      "id": "1",
+      "order_id": 1,
+      "user_id": 1,
+      "order_date": "2024-01-01",
+      "status": "completed",
+      "total_price": 150,
+      "shipping_address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "postal_code": "10001",
+        "country": "USA"
+      },
+      "items": [
+        {
+          "product_id": 1,
+          "name": "Product 1",
+          "quantity": 2,
+          "price": 75
+        }
+      ]
+    }
+  ],
   "products": [
     {
       "id": "1",
-      "name": "Apple iPhone 14 Pro Max",
+      "name": "Product 1",
       "category": "Electronics",
-      "price": 1299.99,
-      "stock": 50,
-      "description": "6.1-inch display, A15 Bionic chip, dual 12MP camera system.",
-      "image_url": "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111846_sp875-sp876-iphone14-pro-promax.png",
-      "rating": 4.8,
-      "reviews_count": 102,
-      "brand": "Apple"
-    },
-    {
-      "id": "2",
-      "name": "Samsung Galaxy S23",
-      "category": "Electronics",
-      "price": 999.99,
-      "stock": 30,
-      "description": "6.6-inch display, Snapdragon 8 Gen 2, triple 50MP camera system.",
-      "image_url": "https://img.freepik.com/free-vector/triple-camera-black-smartphone-concept-mockup_1017-19784.jpg",
-      "rating": 4.6,
-      "reviews_count": 85,
-      "brand": "Samsung"
-    },
-    {
-      "id": "3",
-      "name": "Sony WH-1000XM5 Headphones",
-      "category": "Accessories",
-      "price": 110.99,
-      "stock": 40,
-      "description": "Industry-leading noise cancellation, 30 hours battery life.",
-      "image_url": "https://reviewcentralme.com/wp-content/uploads/2022/06/Sony-1000XM5-UAE-launch-1.jpg",
-      "rating": 4.9,
-      "reviews_count": 120,
-      "brand": "Sony"
-    },
-    {
-      "id": "5",
-      "name": "Adidas Ultraboost 22",
-      "category": "Clothing",
-      "price": 180,
-      "stock": 35,
-      "description": "Primeknit upper with Boost midsole for maximum energy return.",
-      "image_url": "https://cdn.sanity.io/images/c1chvb1i/production/fe5f29bf89fb3d713c954770c4980f76ec039d77-1100x735.jpg?rect=0,1,1100,734&w=400&h=267&q=75&fit=max&auto=format",
-      "rating": 4.8,
-      "reviews_count": 95,
-      "brand": "Adidas"
-    },
-    {
-      "id": "6",
-      "name": "Dyson V11 Vacuum Cleaner",
-      "category": "Home",
-      "price": 599.99,
-      "stock": 15,
-      "description": "Powerful suction, LCD screen, up to 60 minutes of run time.",
-      "image_url": "https://m.media-amazon.com/images/I/711ZcjkTddL._AC_SL1500_.jpg",
-      "rating": 4.9,
-      "reviews_count": 45,
-      "brand": "Dyson"
-    },
-    {
-      "id": "7",
-      "name": "LG 65-Inch 6K Smart TV",
-      "category": "Electronics",
-      "price": 999.98,
-      "stock": 20,
-      "description": "65-inch OLED display, webOS, Dolby Atmos sound.",
-      "image_url": "https://m.media-amazon.com/images/I/914XXHoNMtS._AC_UF350,350_QL80_.jpg",
-      "rating": 4.7,
-      "reviews_count": 75,
-      "brand": "LG"
-    },
-    {
-      "id": "43ae",
-      "name": "Macbook M4",
-      "brand": "Apple",
-      "category": "Electronics",
-      "price": 80,
-      "stock": 15,
-      "description": "With the power of the M4 Pro or M4 Max - The 14-inch MacBook Pro with M4 Pro or M4 Max chip offers incredible performance in a laptop power package. With all-day battery life and a fantastic Liquid Retina XDR display with up to 1,600 nits of peak brightness, it's easy Pro in everything.",
-      "image_url": "https://m.media-amazon.com/images/I/719C6bJv8jL.jpg",
-      "rating": 4.1,
-      "reviews_count": 67
-    },
-    {
-      "id": "2a68",
-      "name": "Mont",
-      "brand": "Piere Cardin",
-      "category": "Clothing",
-      "price": 170,
-      "stock": 6,
-      "description": "High quality: The men's winter coat is made from a blend of 30% wool and 70% polyester, providing warmth, softness and durability. The inner lining is made of 100% polyester and offers a comfortable and skin-friendly feeling. The meticulous workmanship ensures excellent quality and durability.",
-      "image_url": "https://m.media-amazon.com/images/I/71MjuKERUUL._AC_UY1100_.jpg",
+      "price": 75,
+      "stock": 100,
+      "description": "A great product",
+      "image_url": "/product1.jpg",
       "rating": 4.5,
-      "reviews_count": 11
-    },
-    {
-      "id": "116",
-      "name": "Airpods Pro 2",
-      "brand": "Apple",
-      "category": "Electronics",
-      "price": 80,
-      "stock": 26,
-      "description": "Behind the power of AirPods Pro lies the Apple-designed H2 chip, which takes their audio performance to new heights. Smarter Noise Reduction, Superior Three-Dimensional Sound and Extended Battery Life: This chip optimizes the most popular features of AirPods Pro",
-      "image_url": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-pro-2-hero-select-202409_FV1_FMT_WHH?wid=752&hei=636&fmt=jpeg&qlt=90&.v=1725492498882",
-      "rating": 4.5,
-      "reviews_count": 40
-    },
-    {
-      "id": "d0a6",
-      "name": "Lattafa Khamrah",
-      "brand": "Eau de Parfum",
-      "category": "Accessories",
-      "description": "Khamrah by Lattafa Perfumes is a Aromatic Spicy fragrance for women and men",
-      "image_url": "https://m.media-amazon.com/images/S/aplus-media/sota/3ddd3114-b7c8-4628-87f0-f547765e0c1d.__CR0,0,1080,1080_PT0_SX300_V1___.jpg",
-      "price": 55,
-      "stock": 50,
-      "rating": 4,
-      "reviews_count": 154
-    },
-    {
-      "id": "ab4f",
-      "name": "525NS5AQ6 Alpiner 4",
-      "brand": "Alpina",
-      "category": "Accessories",
-      "description": "Modern Swiss-made sports watch with a three hand automatic movement, date, engraved case back and turning bezel",
-      "image_url": "https://m.media-amazon.com/images/I/812TXDfsMhL._AC_SX679_.jpg",
-      "price": 1350,
-      "stock": 10,
-      "rating": 5,
-      "reviews_count": 4545
-    },
-    {
-      "id": "e453",
-      "name": "Espresso Machine",
-      "brand": "RELEXNOW",
-      "category": "Home",
-      "description": "Enjoy Espresso Coffee At Home: The RELEXNOW coffee machine with milk frother allows you to make all your favorite espresso-based coffees.",
-      "image_url": "https://m.media-amazon.com/images/I/714MvaPqkTL._AC_SL1500_.jpg",
-      "price": 120,
-      "stock": 25,
-      "rating": 3,
-      "reviews_count": 262
+      "reviews_count": 50,
+      "brand": "Brand 1"
     }
   ],
   "users": [
     {
       "id": "1",
-      "name": "John Smith",
-      "email": "john.smith@example.com",
-      "password": "hashed_password_1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "hashed_password",
       "address": {
         "street": "123 Main St",
         "city": "New York",
         "postal_code": "10001",
         "country": "USA"
       },
-      "phone": "+1 555 123 4567",
+      "phone": "123-456-7890",
       "orders": [
         {
-          "order_id": 1001,
+          "order_id": 1,
           "product_id": 1,
-          "quantity": 1,
-          "total_price": 1299.99,
-          "order_date": "2024-09-10"
-        },
-        {
-          "order_id": 1002,
-          "product_id": 4,
           "quantity": 2,
-          "total_price": 299.98,
-          "order_date": "2024-08-15"
+          "total_price": 150,
+          "order_date": "2024-01-01"
         }
       ]
-    },
-    {
-      "id": "2",
-      "name": "Emma Wilson",
-      "email": "emma.wilson@example.com",
-      "password": "hashed_password_2",
-      "address": {
-        "street": "456 Park Ave",
-        "city": "London",
-        "postal_code": "SW1A 1AA",
-        "country": "UK"
-      },
-      "phone": "+44 20 7123 4567",
-      "orders": [
-        {
-          "order_id": 1003,
-          "product_id": 3,
-          "quantity": 1,
-          "total_price": 349.99,
-          "order_date": "2024-07-22"
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "name": "Michael Brown",
-      "email": "michael.brown@example.com",
-      "password": "hashed_password_3",
-      "address": {
-        "street": "789 Queen St",
-        "city": "Toronto",
-        "postal_code": "M5H 2N2",
-        "country": "Canada"
-      },
-      "phone": "+1 416 555 1234",
-      "orders": []
-    },
-    {
-      "id": "4",
-      "name": "Sophie Martin",
-      "email": "sophie.martin@example.com",
-      "password": "hashed_password_4",
-      "address": {
-        "street": "10 Rue de Paris",
-        "city": "Paris",
-        "postal_code": "75001",
-        "country": "France"
-      },
-      "phone": "+33 1 23 45 67 89",
-      "orders": [
-        {
-          "order_id": 1005,
-          "product_id": 2,
-          "quantity": 1,
-          "total_price": 999.99,
-          "order_date": "2024-09-05"
-        },
-        {
-          "order_id": 1006,
-          "product_id": 6,
-          "quantity": 1,
-          "total_price": 599.99,
-          "order_date": "2024-10-12"
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "name": "David Lee",
-      "email": "david.lee@example.com",
-      "password": "hashed_password_5",
-      "address": {
-        "street": "15 Harbour View",
-        "city": "Sydney",
-        "postal_code": "2000",
-        "country": "Australia"
-      },
-      "phone": "+61 2 9876 5432",
-      "orders": []
-    },
-    {
-      "id": "6",
-      "name": "Maria Garcia",
-      "email": "maria.garcia@example.com",
-      "password": "hashed_password_6",
-      "address": {
-        "street": "Calle Mayor 123",
-        "city": "Madrid",
-        "postal_code": "28013",
-        "country": "Spain"
-      },
-      "phone": "+34 91 123 4567",
-      "orders": [
-        {
-          "order_id": 1007,
-          "product_id": 7,
-          "quantity": 1,
-          "total_price": 999.98,
-          "order_date": "2024-08-18"
-        },
-        {
-          "order_id": 1008,
-          "product_id": 3,
-          "quantity": 2,
-          "total_price": 699.98,
-          "order_date": "2024-09-30"
-        },
-        {
-          "order_id": 1009,
-          "product_id": 5,
-          "quantity": 1,
-          "total_price": 180,
-          "order_date": "2024-10-05"
-        }
-      ]
-    },
-    {
-      "id": "7",
-      "name": "James Wilson",
-      "email": "james.wilson@example.com",
-      "password": "hashed_password_7",
-      "address": {
-        "street": "42 High Street",
-        "city": "Edinburgh",
-        "postal_code": "EH1 1TB",
-        "country": "UK"
-      },
-      "phone": "+44 131 123 4567",
-      "orders": [
-        {
-          "order_id": 1010,
-          "product_id": 2,
-          "quantity": 1,
-          "total_price": 999.99,
-          "order_date": "2024-10-08"
-        }
-      ]
-    },
-    {
-      "id": "8",
-      "name": "Anna Schmidt",
-      "email": "anna.schmidt@example.com",
-      "password": "hashed_password_8",
-      "address": {
-        "street": "Hauptstraße 45",
-        "city": "Berlin",
-        "postal_code": "10115",
-        "country": "Germany"
-      },
-      "phone": "+49 30 12345678",
-      "orders": [
-        {
-          "order_id": 1011,
-          "product_id": 6,
-          "quantity": 1,
-          "total_price": 599.99,
-          "order_date": "2024-09-20"
-        },
-        {
-          "order_id": 1012,
-          "product_id": 1,
-          "quantity": 1,
-          "total_price": 1299.99,
-          "order_date": "2024-10-15"
-        }
-      ]
-    }
-  ],
-  "orders": [
-    {
-      "order_id": 1001,
-      "user_id": 1,
-      "order_date": "2024-09-10",
-      "status": "Shipped",
-      "total_price": 1299.99,
-      "shipping_address": {
-        "street": "123 Main St",
-        "city": "New York",
-        "postal_code": "10001",
-        "country": "USA"
-      },
-      "items": [
-        {
-          "product_id": 1,
-          "name": "Apple iPhone 14",
-          "quantity": 1,
-          "price": 1299.99
-        }
-      ],
-      "id": "2640"
-    },
-    {
-      "order_id": 1002,
-      "user_id": 1,
-      "order_date": "2024-09-15",
-      "status": "Delivered",
-      "total_price": 299.98,
-      "shipping_address": {
-        "street": "123 Main St",
-        "city": "New York",
-        "postal_code": "10001",
-        "country": "USA"
-      },
-      "items": [
-        {
-          "product_id": 4,
-          "name": "Nike Air Max 270",
-          "quantity": 2,
-          "price": 149.99
-        }
-      ],
-      "id": "e9d8"
-    },
-    {
-      "order_id": 1003,
-      "user_id": 2,
-      "order_date": "2024-09-22",
-      "status": "Processing",
-      "total_price": 349.99,
-      "shipping_address": {
-        "street": "456 Park Ave",
-        "city": "London",
-        "postal_code": "SW1A 1AA",
-        "country": "UK"
-      },
-      "items": [
-        {
-          "product_id": 3,
-          "name": "Sony WH-1000XM5 Headphones",
-          "quantity": 1,
-          "price": 349.99
-        },
-        {
-          "product_id": 5,
-          "name": "Adidas Ultraboost 22",
-          "quantity": 3,
-          "price": 180
-        }
-      ],
-      "id": "a863"
-    },
-    {
-      "order_id": 1004,
-      "user_id": 4,
-      "order_date": "2024-10-01",
-      "status": "Delivered",
-      "total_price": 180,
-      "shipping_address": {
-        "street": "10 Rue de Paris",
-        "city": "Paris",
-        "postal_code": "75001",
-        "country": "France"
-      },
-      "items": [
-        {
-          "product_id": 5,
-          "name": "Adidas Ultraboost 22",
-          "quantity": 1,
-          "price": 180
-        }
-      ],
-      "id": "c3a7"
     }
   ]
 }
